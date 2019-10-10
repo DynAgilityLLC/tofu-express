@@ -140,7 +140,7 @@ export function InitializeExpress(port: number = PORT, name = 'ExpressJS', addit
   const app = express();
   const metricsMiddleware = promBundle({ includeMethod: true });
   const logger = morgan('tiny');
-  app.use(bodyParser.json());
+  app.use(bodyParser.json({limit: '500kb'}));
   app.use(cookieparser());
   app.use(metricsMiddleware);
   app.use(logger);
